@@ -13,7 +13,6 @@ library(patchwork)
 
 jabar_basemap <- jabr_basemap(level = "district")
 load("data/jabar_risk.rda")
-load("data/jabar_cases.rda")
 load("data/jabar_mobility.rda")
 load("data/jabar_stayput.rda")
 
