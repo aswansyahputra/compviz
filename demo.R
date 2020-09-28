@@ -1,13 +1,17 @@
 # Load packages -----------------------------------------------------------
 
-library(tidyverse)
-library(slider)
-library(jabr)
-library(sf)
-library(scales)
-library(hrbrthemes)
-library(gghighlight)
-library(patchwork)
+library(dplyr)       # CRAN v1.0.2
+library(tidyr)       # CRAN v1.1.2
+library(forcats)     # CRAN v0.5.0
+library(stringr)     # CRAN v1.4.0
+library(ggplot2)     # CRAN v3.3.2
+library(slider)      # CRAN v0.1.5
+library(jabr)        # CRAN v0.1.2
+library(sf)          # CRAN v0.9-5
+library(scales)      # CRAN v1.1.1
+library(hrbrthemes)  # CRAN v0.8.0
+library(gghighlight) # CRAN v0.3.0
+library(patchwork)   # CRAN v1.0.1
 
 # Load data ---------------------------------------------------------------
 
@@ -109,19 +113,6 @@ jabar_risk_plot <-
 
 jabar_risk_plot
 
-jabar_basemap %>% 
-  left_join(
-    jabar_stayput %>% 
-      filter(date == max(date)) %>% 
-      mutate(district = str_to_upper(district)),
-    by = c("name_kemendagri" = "district")
-  ) %>% 
-  ggplot(aes(fill = stayput)) +
-  geom_sf(colour = "grey40",
-          size = 0.15,
-          show.legend = TRUE) +
-  scale_fill_viridis_c()
-
 # Stayput -----------------------------------------------------------------
 
 jabar_stayput_plot <-
@@ -171,6 +162,27 @@ jabar_stayput_plot <-
   theme_ipsum_pub(grid = FALSE)
 
 jabar_stayput_plot
+
+jabar_basemap %>% 
+  left_join(
+    jabar_stayput %>% 
+      filter(date == max(date)) %>% 
+      mutate(district = str_to_upper(district)),
+    by = c("name_kemendagri" = "district")
+  ) %>% 
+  ggplot(aes(fill = stayput)) +
+  geom_sf(colour = "grey40",
+          size = 0.15,
+          show.legend = TRUE) +
+  scale_fill_viridis_c(labels = percent_format()) +
+  labs(
+    x = NULL,
+    y = NULL,
+    fill = "% stay-at-home",
+    title = "Stayput map",
+    caption = "Source: Facebook Movement Range Maps"
+  ) +
+  theme_ipsum_pub()
 
 # Composing plot ----------------------------------------------------------
 
