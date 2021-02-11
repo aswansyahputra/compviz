@@ -1,0 +1,165 @@
+---
+title: Design and compose `ggplot2` graph
+subtitle: Using tidyverse in R
+author: Muhammad Aswan Syahputra
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    self_contained: false
+    css: xaringan-themer.css
+    nature:
+      ratio: "16:9"
+      highlightLanguage: r
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include = F}
+knitr::opts_chunk$set(
+  fig.width = 8, 
+  message = FALSE, 
+  warning = FALSE, 
+  tidy = 'styler',
+  prompt = FALSE,
+  cache = FALSE, 
+  dev = "svg", 
+  fig.ext = "svg",
+  fig.retina = 3,
+  fig.showtext = TRUE
+)
+
+library(flipbookr)
+library(tidyverse)
+library(showtext)
+
+font_add_google("Josefin Sans")
+showtext_auto()
+```
+
+```{r xaringan-themer, include=FALSE}
+library(xaringanthemer)
+
+style_mono_accent(
+  base_color = "#1c5253",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+
+```
+
+class: center, middle, title-slide
+background-image: url(img/backdrop.jpg)
+background-size: cover
+
+# Design and Compose Graph
+<!-- <br> -->
+<!-- <img src="img/aswan_circle.png" width="150px"/> -->
+<br>
+### Building visualisation using `tidyverse`
+.large[Muhammad Aswan Syahputra | Bandung | 24 Sep 2020]
+
+---
+
+# Hi, I'm Aswan!
+
+.pull-left[
++ **Data analyst** @ [Jabar Digital Service](https://digitalservice.jabarprov.go.id)
++ **Sensometrics specialist** @ [Sensolution.ID](https://sensolution.id)
++ Initiator of [**Komunitas R Indonesia**](https://t.me/GNURIndonesia)
++ R **instructor** @ [DQLab](https://dqlab.id), [R Academy Telkom University](https://dbe.telkomuniversity.ac.id/r-academy/), and some universities
++ Passionate about: **Data carpentry** and **data visualization**
+
+> Twitter: @aswansyahputra_
+> Telegram: @aswansyahputra
+
+]
+
+.pull-right[
+
+```{r, echo = FALSE, out.width = "80%", fig.align = 'center'}
+knitr::include_graphics(path = "img/aswan.jpg")
+```
+
+]
+
+---
+
+# Elements of graphics
+
+--
+
+1. *Data*
+
+--
+
+2. *Mapping*
+
+--
+
+3. *Statistic*
+
+--
+
+4. *Scales*
+
+--
+
+5. *Geometries*
+
+--
+
+6. *Facets*
+
+--
+
+7. *Coordinates*
+
+--
+
+8. *Theme*
+
+---
+
+class: inverse, left, middle
+
+# Small multiples
+
+---
+
+class: inverse, left, middle
+
+# (Not) small multiples
+
+---
+
+class: center, middle
+background-image: url(img/backdrop2.jpg)
+background-size: cover
+
+# Let's dive in!
+
+---
+
+class: inverse, center, middle
+background-image: url(img/backdrop.jpg)
+background-size: cover
+
+# Thank you!
+<!-- <br> -->
+<img src="img/aswan_circle.png" width="150px"/>
+<br>
+### Contact me!
+.large[muhammadaswansyahputra@gmail.com]
+
+```{css, eval = TRUE, echo = FALSE}
+.remark-code{line-height: 1.5; font-size: 80%}
+
+@media print {
+  .has-continuation {
+    display: block;
+  }
+}
+```
